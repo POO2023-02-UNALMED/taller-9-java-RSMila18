@@ -37,7 +37,7 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		gd.setVgap(5);
 		gd.setHgap(4);
 		
-		gd.setAlignment(Pos.***);
+		gd.setAlignment(Pos.BASELINE_CENTER);
 		
 		Button b7 = new Button("7");
 		gd.add(b7, 0, 0);
@@ -123,7 +123,7 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 	}
 
 	@Override
-	public void start(ActionEvent event) {
+	public void ***(ActionEvent event) {
 		
 		Button b = (Button) event.getSource();
 		String value = b.getText();
