@@ -105,7 +105,7 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		b0.setOnAction(this);
 		
 		Button plus = new Button("+");
-		gd.add(plus, 1, 3);
+		gd.add(plus, 2, 3);
 		plus.setPrefWidth(50);
 		plus.setOnAction(this);
 		
@@ -122,15 +122,19 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		this.getChildren().addAll(sp, gd);
 	}
 
-	@Override
-	public void ***(ActionEvent event) {
+
+	public void start(ActionEvent event) {
 		
 		Button b = (Button) event.getSource();
 		String value = b.getText();
+
 		
-		***
-		***
-		***
+	}
+
+
+	@Override
+	public void handle(ActionEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 	
