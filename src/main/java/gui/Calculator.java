@@ -123,20 +123,72 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 	}
 
 
-	public void start(ActionEvent event) {
-		
-		Button b = (Button) event.getSource();
-		String value = b.getText();
+    public void handle(ActionEvent event) {
+        Button b = (Button) event.getSource();
+        String value = b.getText();
+        
+        String text = displayText.getText();
 
-		
-	}
+        if (b instanceof Button) {
+            if (value.equals("+") || value.equals("/") || value.equals("*") || value.equals("-")) {
+                if (operator == null) {
+                    operator = value;
+                    number1 = text;
+                    displayText.setText(text + value);
+                } else {
+                   
+                    displayText.setText("ERROR");
+                }
+            } else if (value.equals("=")) {
+                if (operator != null && !number1.isEmpty()) {
+                    number2 = text.substring(text.lastIndexOf(operator) + 1);
+                    Resultado();
+                }
+            } else if (value.equals("C")) {
+                LimpiarCalculadora();
+            } else {
+                displayText.setText(text + value);
+            }
+        }
+    }
 
+    private void Resultado() {
+        double n1 = Double.parseDouble(number1);
+        double n2 = Double.parseDouble(number2);
+        double resultado = 0;
 
-	@Override
-	public void handle(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+        switch (operator) {
+            case "+":
+                resultado = n1 + n2;
+                break;
+            case "-":
+                resultado = n1 - n2;
+                break;
+            case "*":
+                resultado = n1 * n2;
+                break;
+            case "/":
+                if (n2 != 0) {
+                    resultado = n1 / n2;
+                } else {
+                    displayText.setText("ERROR");
+                    return;
+                }
+                break;
+        }
+
+        displayText.setText(String.valueOf(resultado));
+        operator = null;
+        number1 = "";
+        number2 = "";
+    }
+
+    private void LimpiarCalculadora() {
+        displayText.setText("");
+        operator = null;
+        number1 = "";
+        number2 = "";
+    }
 	
 
 }
